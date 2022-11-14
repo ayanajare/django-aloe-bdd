@@ -9,5 +9,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name : Setup Bandit
-        uses: jpetrucciani/bandit-check@master
+      - name: Install bandit
+        run: pip install bandit
+      - name: Run bandit
+        run: bandit -r .
