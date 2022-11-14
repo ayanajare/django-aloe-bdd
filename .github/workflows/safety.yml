@@ -1,4 +1,4 @@
-name: pytest
+name: safety
 
 on: [push]
 
@@ -6,7 +6,12 @@ jobs :
   lint :
     runs-on : ubuntu-lastest
     steps :
-      - uses: actions/checkout@v2
+      - name : Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Python  ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+
       - uses: pyupio/safety@2.3.1
         with:
           api-key: ${{ secrets.SAFETY_API_KEY }}

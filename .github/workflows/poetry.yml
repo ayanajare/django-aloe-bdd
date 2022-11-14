@@ -1,4 +1,4 @@
-name: coverage-code
+name: poetry
 
 on: [push]
 
@@ -8,8 +8,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name : Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Python  ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+
       - name: Setup poetry
         run : |
           pipx install poetry
           pipx upgrade poetry
+          poetry run python -V

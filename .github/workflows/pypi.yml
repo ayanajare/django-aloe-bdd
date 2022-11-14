@@ -6,8 +6,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Setup Pypi
-      run : |
-        pip install pip-install-test
-        pip install pip-run
+      - name : Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Python  ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+
+      - name: Setup Pypi
+        run : |
+          pip install pip-install-test
+          pip install pip-run
