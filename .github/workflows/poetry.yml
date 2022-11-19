@@ -16,5 +16,15 @@ jobs:
 
       - name: Setup poetry
         run : |
+          pipx install poetry
           poetry install
+      - name : Poetry runs
+        run : |
+          poerty run flake8
+          poetry run isort
+          poetry run bandit
+          poetry run pytest
+          poetry run coverage run
+
+
 
